@@ -3,42 +3,54 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package KoperasiGetterSetter;
+package Tugas4;
 
 /**
  *
  * @author CLAURIA
  */
 public class Anggota {
+    private String ktp;
     private String nama;
-    private String alamat;
-    private float simpanan;
+    private int limit;
+    private int jumlah;
+    private int angsur;
     
-    Anggota(String nama, String alamat){
+    Anggota(String ktp, String nama, int limit){
+        this.ktp = ktp;
         this.nama = nama;
-        this.alamat = alamat;
-        this.simpanan =0;
-    }
-    
-    public void setNama(String nama){
-        this.nama = nama;
-    }
-    public void setAlamat(String alamat){
-        this.alamat = alamat;
+        this.limit = limit;
+        this.jumlah = jumlah;
     }
     public String getNama(){
         return nama;
     }
-    public String getAlamat(){
-        return alamat;
+    
+    public int getLimitPinjaman(){
+        return limit;
     }
-    public float getSimpanan(){
-        return simpanan;
+    
+    public void pinjam(int jumlah){
+        if(jumlah > limit){
+            System.out.println("Maaf, jumlah pinjaman melebihi limit");
+        }else{
+            this.jumlah = jumlah;
+        }
     }
-    public void setor(float uang){
-        simpanan += uang;
+    
+    public int getJumlahPinjaman(){
+        jumlah = jumlah - angsur;
+        return jumlah;
     }
-    public void pinjam(float uang){
-        simpanan -= uang;
+    
+    public void angsur(int jumlahAngsur){
+        if(jumlahAngsur > limit){
+            System.out.println("Maaf, jumlah angsuran anda melebihi limit");
+        }else if(jumlahAngsur < (limit * 0.1)){
+            System.out.println("Maaf angsuran harus 10% dari jumlah pinjaman");
+        }
+        else {
+            jumlah -= jumlahAngsur;
+        }
     }
 }
